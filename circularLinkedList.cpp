@@ -14,10 +14,15 @@ private:
 public:
     circularLinkedList(/* args */);
     ~circularLinkedList();
+    Node *createNode(int data)
+    {
+        Node *newNode = new Node();
+    }
 };
 
 circularLinkedList::circularLinkedList(/* args */)
 {
+    start = NULL;
 }
 
 circularLinkedList::~circularLinkedList()
