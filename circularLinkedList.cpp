@@ -70,6 +70,11 @@ public:
         }
         cout<<"circular \n";
     }
+
+    void dissplay()
+    {
+        cout<<"Unable to do more than this";
+    }
 };
 
 circularLinkedList::circularLinkedList(/* args */)
