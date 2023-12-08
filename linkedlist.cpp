@@ -142,6 +142,52 @@ public:
             delete temp;
         }
     }
+    void insertAfterNode(int value, int data)
+    {
+        Node *newNode = createNode(data);
+        if(!newNode)
+        {
+            cout<<"Insert After Node error: insertAfterNode \n";
+        }
+        Node *targetNode = head;
+        Node *temp = targetNode;
+        while(targetNode->data != value)
+        {
+            targetNode = targetNode->next;
+            if(targetNode ==  NULL)
+            {
+            	cout<<" Value not found \n";
+			}
+        }
+        newNode->next = targetNode->next;
+        targetNode->next = newNode;
+    }
+    
+    
+    void deleteBeforeNode(int value)
+    {
+    	Node *temp = head;
+    	if(!temp)
+    	{
+    		cout<<"Error in deleteBeforeNode \n";
+		}
+    	Node *previous = temp;
+    	Node *targetNode = temp;
+    	Node *final = temp;
+    	while(targetNode->data != value)
+    	{
+    		previous = targetNode;
+    		targetNode = targetNode->next;
+    		while(temp->data != previous->data)
+    		{
+    			final = temp;
+    			temp= temp->next;
+			}
+		}
+		final->next = targetNode;
+		delete previous;
+		delete temp;
+	}
 
     void display()
     {
@@ -176,7 +222,7 @@ int main(int argc, char const *argv[])
     int value;
     while (1)
     {
-        cout << "Enter your choice \n 1. CreateNode \n 2. Insert In Beginning \n 3. Insert In rear \n 4. Delete from Beginning \n 5. Delete from rear \n 6. Insert Before Value \n 7. Delete Value \n 8. Exit() \n  \n";
+        cout << "Enter your choice \n 1. CreateNode \n 2. Insert In Beginning \n 3. Insert In rear \n 4. Delete from Beginning \n 5. Delete from rear \n 6. Insert Before Value \n 7. Delete Value \n 8. Exit() \n 9.Insert After Node \n 10. Delete Before Node \n";
         cin >> choice;
         switch (choice)
         {
@@ -220,7 +266,18 @@ int main(int argc, char const *argv[])
             cout << "Thank you \n";
             cout << "Programm Exiting..";
             return 0;
-
+        case 9:
+            cout<<"Enter the value of node \n";
+            cin>>value;
+            cout<<"Enter the data to be inserted \n";
+            cin>>data;
+            ob1.insertAfterNode(value, data);
+            break;
+        case 10:
+        	cout<<"Enter the value \n";
+        	cin>>value;
+        	ob1.deleteBeforeNode(value);
+        	break;
         default:
             cout << "Invalid Input" << endl;
         }
